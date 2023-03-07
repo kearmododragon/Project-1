@@ -6,12 +6,14 @@ function enterName() {
   let user = prompt("Hello! What is your name?", "Enter name");
   if (user != null) {
     document.getElementById("name").innerHTML =
-      `Hello ${user}! Sit down and lets play Blackjack!`;
+      `Hello, ${user}! Sit down and let's play Blackjack!`;
+      document.getElementById("user").innerHTML =
+      `${user}:`
     document.getElementById("currentScore").innerHTML =
       `Current Money: $ ${score}`;
   }
 }
-// prompt doesn't trigger When deck is generated"
+// need to have "enter name" auto removed //
 
 //leave table button//
 
@@ -78,11 +80,8 @@ timer = setInterval(function () {
     clearInterval(timer)
   }
 }, 2000)
-  // shuffel deck //
 
-  // deal users cards //
-
-  // deal dealers cards //
-
-  // 
+  // deal users + dlr cards //
+  var dealerAces = 0;
+  var userAces = 0;
   */

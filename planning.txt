@@ -20,6 +20,6 @@ ask user whether they want to bet again or leave.
 "blackjack" pays 3-1 
 Specific suit blackjack, chosen at random each hand, pays 300-1
 multiplayer?
-
+pop up for betting over budget
 
 

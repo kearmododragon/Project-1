@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src = "main.js"></script>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="main.css">
     <title>Blackjack</title>
 </head>
+
 <body>
     BLACKJACK GAME HERE
-<h1>Dealers cards</h1>
-<h2>Users cards</h2>
-<ul id="name">Name: </ul>
-<ul id="high">Highest Money: $</ul>
-<ul id="currentScore">Current Money: $</ul>
-<ul id="bet">current bet: </ul>
-<ul id="time">Time at the table: </ul>
-<button onclick="enterName()">PLAY</button>
-<button onclick="dealBet()">DEAL</button> 
-<button onclick="reset()">Leave Table</button>
+    <h2>Croupier: <span id="dealerSum"></span> </h1>
+        <div id="dealerCards">
+            <img src="./images/back.png">
+        </div>
+        <h2 id="user">
+            <span id="userSum"></span> </h1>
+            <div id="userCards">
+                <img src="./images/back.png">
+        </h2>
+        <h2>
+            <span id="spareDeck"></span>
+            <img src="./images/back.png">
+        </h2>
+        <ul id="name">Name: </ul>
+        <ul id="high">Highest Money: $</ul>
+        <ul id="currentScore">Current Money: $</ul>
+        <ul id="bet">Current Bet: </ul>
+        <ul id="time">Time at the table: </ul>
+        <button onclick="enterName()">PLAY</button>
+        <button onclick="dealBet()">DEAL</button>
+        <button onclick="reset()">Leave Table</button>
 </body>
+
 </html>
