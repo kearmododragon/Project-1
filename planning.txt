@@ -1,0 +1,25 @@
+Blackjack
+
+Enter player name prompt, store bottom left.
+"You have $100" 
+"bet amount: "
+shuffle deck. 52 cards.
+Deal user 2 cards. (max 5 cards)
+deal "Dealer" 2 cards.
+"reveal" user cards.
+"hit" or "stick" buttons. 
+if card value >21 then bust, other user wins.
+once stick triggered, show dealer cards.
+if dlr cards value <16 hit, else stick. 
+check winning conditions (closest to 21)
+if player wins, return double. else return 0.
+update player total.
+ask user whether they want to bet again or leave.  
+
+- potential aditions;
+"blackjack" pays 3-1 
+Specific suit blackjack, chosen at random each hand, pays 300-1
+multiplayer?
+
+
+
