@@ -1,68 +1,88 @@
-// User's name //
+// Starter Money //
+let score = 100
 
+// User's name + starter money//
 function enterName() {
-    let user = prompt("Hello! What is your name?", "Please enter your name");
-    if (person != null) {
-        document.getElementById("name").innerHTML = 
-        `Hello ${user}! Sit down and lets play Blackjack!`;
-    }
+  let user = prompt("Hello! What is your name?", "Enter name");
+  if (user != null) {
+    document.getElementById("name").innerHTML =
+      `Hello ${user}! Sit down and lets play Blackjack!`;
+    document.getElementById("currentScore").innerHTML =
+      `Current Money: $ ${score}`;
+  }
 }
-enterName()
-// prompt doesn't trigger"
+// prompt doesn't trigger When deck is generated"
 
-let deck
-class Card {
-  static rankLookup = {
-    "A": 14,
-    "K": 13,
-    "Q": 12,
-    "J": 11
-  }
-  constructor(suit, rank) {
-    this.suit = suit 
-    this.rank = rank
-    this.image = ""
+//leave table button//
+
+
+/*if (score > highScore) {
+
+}*/
+
+// deal button //
+
+function dealBet() {
+  let bet = prompt("How much would you like to bet?", "$$$");
+  if (bet <= score) {
+    document.getElementById("bet").innerHTML =
+      `Current bet: $ ${bet}`;
   }
 }
-class Deck {
-  static suits = ['SP', "D", "H", "C"]
-  static ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
-  constructor() {
-    this.cards = []
+
+// reset board
+/*function restartGame() {
+  for (var i = 0; i < board.length; i++) {
+    board[i] = 0
   }}
-  makeDeck() {
-    console.log(this.cards)
-    for(let s = 0;s<Deck.suits.length; s++){
-      for (let r = 0; r<Deck.ranks.length; r++){
-        let suit = Deck.suits[s]
-        let rank = Deck.ranks[r]
-        let newCard = new Card(suit, rank)
-        this.cards.push(newCard)
-      }
+*/
+//practice code block /|\
+
+// code for 52 card deck + shuffle functions//
+function buildDeck() {
+  var ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+  var suits = ["Spade", "Diamond", "Heart", "Clubs"];
+  var deck = [];
+
+  for (var suitAllocater = 0; suitAllocater < 4; suitAllocater++) {
+    for (var rankAllocator = 0; rankAllocator < 13; rankAllocator++) {
+      deck.push(ranks[rankAllocator] + suits[suitAllocater]);
     }
   }
-function initialize() {
-  console.log('start deck factory')
-  deck = new Deck()
-  deck.makeDeck()
-  console.log(deck)
+  return deck;
 }
-initialize()
+function shuffleDeck(deck) {
+  for (var i = 0; i < 52; i++) {
+    var cardA = deck[i];
+    var randomIndex = Math.floor(Math.random() * 52);
+    deck[i] = deck[randomIndex];
+    deck[randomIndex] = cardA;
+  }
+}
 
-// ABOVE IS CODE FOR THE 52 CARD DECK //
-
-// money counter //
-
+var testDeck = buildDeck();
+shuffleDeck(testDeck);
+console.log(testDeck)
+/*
 // highest total counter //
 
 // bet counter //
 
 // time at the table // 
+let timer
+let count = 0
+timer = setInterval(function () {
+  console.log("timers are cool", count)
+  count = count + 1
+  if (count > 10) {
+    clearInterval(timer)
+  }
+}, 2000)
+  // shuffel deck //
 
-// shuffel deck //
+  // deal users cards //
 
-// deal users cards //
+  // deal dealers cards //
 
-// deal dealers cards //
-
-// 
+  // 
+  */

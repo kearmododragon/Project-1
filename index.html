@@ -4,20 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src = "main.js" defer></script>
+    <script src = "main.js"></script>
     <title>Blackjack</title>
 </head>
 <body>
     BLACKJACK GAME HERE
 <h1>Dealers cards</h1>
 <h2>Users cards</h2>
-<ul>Name</ul>
-<ul>Current Money:</ul>
-<ul>Highest Money: </ul>
-<ul>current bet: </ul>
-<ul>Time at the table: </ul>
+<ul id="name">Name: </ul>
+<ul id="high">Highest Money: $</ul>
+<ul id="currentScore">Current Money: $</ul>
+<ul id="bet">current bet: </ul>
+<ul id="time">Time at the table: </ul>
 <button onclick="enterName()">PLAY</button>
-<p id="name"></p>
-    <button>DEAL</button>
+<button onclick="dealBet()">DEAL</button> 
+<button onclick="reset()">Leave Table</button>
 </body>
 </html>
