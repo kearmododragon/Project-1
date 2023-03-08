@@ -13,16 +13,20 @@ color: rgb(226, 226, 40);
 #dealerCards img {
   height: 200px;
   margin: 5px;
+  box-shadow: 0 0px 10px rgb(40, 226, 71);
 }
 #userCards img {
   height: 200px;
   margin: 5px;
+  box-shadow: 0 0px 10px rgb(226, 52, 40);
 
 }
 #spareDeck img {
   height: 200px;
   margin: 5px;
   float: left;
+  box-shadow: 0 0px 40px rgb(226, 226, 40);
+
   
 }
 
