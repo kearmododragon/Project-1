@@ -8,18 +8,34 @@ let dealerAces = 0;
 let userAces = 0;
 let canHit = true;
 
+
+let player1 = {
+  name: null,
+  score: 100,
+  cards: [],
+  bet: 0,
+}
+let dealer = {
+  name: "Croupier",
+  cards: [],
+}
+
+function init(){
+
+}
 function enterName() {
-  let user = prompt("Hello! What is your name?", "Enter name");
-  if (user != null) {
+player1.name = prompt("Hello! What is your name?", "Enter name");
+  if (player1.name != null) {
     document.getElementById("name").innerHTML =
-      `Hello, ${user}! Sit down and let's play Blackjack!`;
+      `Hello, ${player1.name}! Sit down and let's play Blackjack!`;
     document.getElementById("user").innerHTML =
-      `${user}:`
+      `${player1.name}:`
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${score}`;
-    console.log(user)
+    console.log(player1.name)
   }
 }
+
 // need to have "enter name" auto removed //
 
 //leave table button//
@@ -49,7 +65,7 @@ function shuffDeck(deck) {
 
 let builtDeck = buildDeck();
 let shuffledDeck = shuffDeck(builtDeck)
-//-----------------DONT TOUCH ABOVE THIS LINE-----------------//
+
 function dealBet() {
   let bet = prompt("How much would you like to bet?", "$$$");
   if (bet <= score) {
@@ -58,16 +74,32 @@ function dealBet() {
   }
   console.log(bet)
   console.log(shuffledDeck)
+  dealCard(player1);
+  dealCard(player1);
+  dealCard(dealer);
+  dealCard(dealer);
+  console.log(player1)
+  console.log(dealer)
 }
 
 
-function dealCard() {
-  hidden = deck.shift();
-  dealerSum += getValue(hidden);
-dealerAceCount += checkAce
-console.log(hidden);
-console.log(dealerSum);
+function dealCard(gambler) {
+  gambler.cards.push(shuffledDeck.pop())
 }
+
+function hitPlayer(){
+  dealCard(player1)
+  console.log(player1.cards)
+}
+
+function isBust(){
+}
+
+function currentHandValue(){
+
+}
+
+/*
 function getValue(cardA) {
   let data = cardA.split("-");
   let value = data[0];
@@ -81,9 +113,11 @@ function getValue(cardA) {
   return parseInt(value);
 }
 
-function checkAce(cardA) {
-  if (card[0] === "A"){
-    return 1;
-  }
-  return 0;
-}
+dealerSum += getValue(hidden);
+console.log(hidden);
+
+
+
+/*user + player
+define as objects 
+each object ${user}*/
