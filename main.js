@@ -2,6 +2,12 @@
 let score = 100;
 let bet;
 let user;
+var dealerSum =0;
+var userSum =0;
+var hidden;
+var dealerAces =0;
+var userAces =0;
+var canHit = true;
 
 
 // User's name + starter money//
@@ -46,6 +52,7 @@ function buildDeck() {
   }
   return deck;
 }
+
 function shuffleDeck(deck) {
   for (var i = 0; i < 52; i++) {
     var cardA = deck[i];
@@ -55,28 +62,44 @@ function shuffleDeck(deck) {
     console.log(shuffledDeck);
   }
 }
-
+console.log(shuffledDeck)
 var shuffledDeck = buildDeck();
 
-// deal button //
+//-------------------- deal button -------------------- //
 
 function dealBet() {
   let bet = prompt("How much would you like to bet?", "$$$");
   if (bet <= score) {
     document.getElementById("bet").innerHTML =
       `Current bet: $ ${bet}`;
-  }
+        }
   console.log(bet)
   console.log(shuffledDeck)
 }
-//shuffleDeck(testDeck);
-//console.log(testDeck)
 
-// start game //
-//function startGame() {
-//  hidden = dekc.pop();
-//  dealerSum+= 
-//}
+function cardValue(cardA) {
+  let data = cardA.split("-");
+  let value = data[0];
+  
+  if (isNaN(value)) {
+    if (value === "A") {
+      return 11;
+    } return 10;
+  }
+  return parseInt(value);
+}
+function startGame() {
+  hidden = deck.pop();
+  dealerSum += getValue(hidden) 
+  dealerAces += checkAce(hidden);
+  console.log(hidden)
+  console.log(dealerSum)
+}
+function checkAce(cardA) {
+  if (cardA[0] === "A"){
+  return 1;
+} return 0;
+}
 
 /*
 
