@@ -11,7 +11,6 @@
 </head>
 
 <body>
-    BLACKJACK GAME HERE
     <h2>Croupier: <span id="dealerSum"></span> </h1>
         <div id="dealerCards">
             <img src="./images/back.png">
@@ -20,19 +19,29 @@
             <span id="userSum"></span> </h1>
             <div id="userCards">
                 <img src="./images/back.png">
+            </div>
         </h2>
         <h2>
-            <span id="spareDeck"></span>
-            <img src="./images/back.png">
+            <div id="spareDeck">
+                <span id="spareDeck"></span>
+                <img src="./images/back.png">
+                </di>
         </h2>
-        <ul id="name">Name: </ul>
-        <ul id="high">Highest Money: $</ul>
-        <ul id="currentScore">Current Money: $</ul>
-        <ul id="bet">Current Bet: </ul>
-        <ul id="time">Time at the table: </ul>
-        <button onclick="enterName()">PLAY</button>
-        <button onclick="dealBet()">DEAL</button>
-        <button onclick="reset()">Leave Table</button>
+        <div id="stats">
+            <ul id="name">Name: </ul>
+            <ul id="high">Highest Pot: $</ul>
+            <ul id="currentScore">Current Pot: $</ul>
+            <ul id="bet">Current Bet: </ul>
+            <ul id="time">Time at the table: </ul>
+        </div>
+        <div>
+            <button id="playB" onclick="enterName()">Play</button>
+            <button id="dealB"onclick="dealBet()">Deal</button>
+            <button id="leaveB"onclick="reset()">Leave Table</button>
+            <button id = "hitB">Hit</button>
+            <Button id = "stayB">Stay</Button>
+            <p id="result"></p>
+        </div>
 </body>
 
 </html>

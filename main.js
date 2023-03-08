@@ -1,5 +1,8 @@
 // Starter Money //
-let score = 100
+let score = 100;
+let bet;
+let user;
+
 
 // User's name + starter money//
 function enterName() {
@@ -10,34 +13,24 @@ function enterName() {
       document.getElementById("user").innerHTML =
       `${user}:`
     document.getElementById("currentScore").innerHTML =
-      `Current Money: $ ${score}`;
+      `Current Pot: $ ${score}`;
+      console.log(user)
   }
 }
 // need to have "enter name" auto removed //
 
 //leave table button//
-
-
-/*if (score > highScore) {
-
-}*/
-
-// deal button //
-
-function dealBet() {
-  let bet = prompt("How much would you like to bet?", "$$$");
-  if (bet <= score) {
-    document.getElementById("bet").innerHTML =
-      `Current bet: $ ${bet}`;
-  }
-}
-
-// reset board
 /*function restartGame() {
   for (var i = 0; i < board.length; i++) {
     board[i] = 0
   }}
-*/
+
+/*if (score > highScore) {
+
+}*/
+// reset board
+
+
 //practice code block /|\
 
 // code for 52 card deck + shuffle functions//
@@ -59,13 +52,38 @@ function shuffleDeck(deck) {
     var randomIndex = Math.floor(Math.random() * 52);
     deck[i] = deck[randomIndex];
     deck[randomIndex] = cardA;
+    console.log(shuffledDeck);
   }
 }
 
-var testDeck = buildDeck();
-shuffleDeck(testDeck);
-console.log(testDeck)
+var shuffledDeck = buildDeck();
+
+// deal button //
+
+function dealBet() {
+  let bet = prompt("How much would you like to bet?", "$$$");
+  if (bet <= score) {
+    document.getElementById("bet").innerHTML =
+      `Current bet: $ ${bet}`;
+  }
+  console.log(bet)
+  console.log(shuffledDeck)
+}
+//shuffleDeck(testDeck);
+//console.log(testDeck)
+
+// start game //
+//function startGame() {
+//  hidden = dekc.pop();
+//  dealerSum+= 
+//}
+
 /*
+
+
+
+
+
 // highest total counter //
 
 // bet counter //
@@ -82,6 +100,13 @@ timer = setInterval(function () {
 }, 2000)
 
   // deal users + dlr cards //
-  var dealerAces = 0;
-  var userAces = 0;
-  */
+var dealerSum =0;
+var userSum =0;
+
+var dealerAces =0;
+var userAces =0;
+
+var hidden;
+*/
+
+// on event listener for Deal, initiate buildDeack();

@@ -23,3 +23,10 @@ multiplayer?
 pop up for betting over budget
 
 
+// THOUGHTS FROM ANY TIME //
+the ${name} section, could change each hand.
+
+"Well done ${name} you won $ ${bet*2}"
+"Oh No! ${name} you lost ${bet}" 
+
+

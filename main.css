@@ -1,6 +1,7 @@
 html {
     height: 100%;
     width: 100%;
+    
   
   }
 body {
@@ -10,16 +11,60 @@ color: rgb(226, 226, 40);
 }
 
 #dealerCards img {
-  height: 30vmin;
-  width: 20vmin;
+  height: 200px;
   margin: 5px;
 }
 #userCards img {
-  height: 30vmin;
-  width: 20vmin;
+  height: 200px;
   margin: 5px;
+
 }
 #spareDeck img {
-  text-align: left;
+  height: 200px;
+  margin: 5px;
+  float: left;
   
+}
+
+#stats {
+  float: left;
+  border-color: rgb(226, 226, 40);
+  border-radius: 2px
+  ;
+}
+
+#playB {
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  color: black;
+  background-color: rgb(226, 226, 40);
+}
+#dealB {
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  color: black;
+  background-color: rgb(226, 226, 40);
+}
+#leaveB {
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  color: black;
+  background-color: rgb(226, 226, 40);
+}
+#hitB {
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  color: black;
+  background-color: rgb(226, 226, 40);
+}
+#stayB {
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  color: black;
+  background-color: rgb(226, 226, 40);
 }
