@@ -10,6 +10,10 @@ background-color: black;
 color: rgb(226, 226, 40);
 }
 
+#high{
+  color: black;
+}
+
 #dealerCards img {
   height: 200px;
   margin: 5px;

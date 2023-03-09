@@ -64,22 +64,28 @@ function shuffDeck(deck) {
   return deck;
 }
 
-let builtDeck = buildDeck();
-let shuffledDeck = shuffDeck(builtDeck)
+let builtDeck;
+let shuffledDeck;
 
 function dealBet() {
+  builtDeck = buildDeck();
+  shuffledDeck = shuffDeck(builtDeck);
+  player1.cards = []
+  dealer.cards = []
   let bet = prompt("How much would you like to bet?", "$$$");
   if (bet <= score) {
     document.getElementById("bet").innerHTML =
       `Current bet: $ ${bet}`;
+      document.getElementById("stayB").disabled = false; 
+      document.getElementById("hitB").disabled = false;
   }
   console.log(bet)
   dealCard(player1);
   dealCard(player1);
   dealCard(dealer);
   dealCard(dealer);
-  playerHandValue();
-  dealerHandValue();
+  setPlayerHandValue();
+  setDealerHandValue();
 }
 
 function dealCard(gambler) {
@@ -88,12 +94,12 @@ function dealCard(gambler) {
 
 function hitPlayer() {
   dealCard(player1)
-  playerHandValue()
+  setPlayerHandValue()
   console.log(player1.cards)
   isBust()
 }
 
-function playerHandValue() {
+function setPlayerHandValue() {
   player1.handValue = 0
   for (let i = 0; i < player1.cards.length; i++) {
     let numberRankSplit = player1.cards[i].split("");
@@ -108,7 +114,7 @@ function playerHandValue() {
   } console.log(player1)
 }
 
-function dealerHandValue() {
+function setDealerHandValue() {
   dealer.handValue = 0
   for (let i = 0; i < dealer.cards.length; i++) {
     let dealerRankSplit = dealer.cards[i].split("");
@@ -123,7 +129,7 @@ function dealerHandValue() {
   } console.log(dealer)
 }
 
-
+// dealer 
 
 function isBust() {
   if (player1.handValue > 21) {
@@ -133,18 +139,19 @@ function isBust() {
 
     document.getElementById("name").innerHTML =
     `Oh No ${player1.name}! You went bust with ${player1.handValue}!`;
-    console.log("YOU LOSE MESSAGE")
-    // block hit
     // trigger endgame
   }
 }
 
 function stayButton() {
-  /*document.getElementById("dealB") =
-  this.disabled=false;
-  document.getElementById("hitB") =
-  this.disabled=true;*/
-  console.log(stay);
+  document.getElementById("dealB").disabled = false; 
+  document.getElementById("hitB").disabled = true;
+  // if dlr value < player value draw card.
+  while (dealer.handValue < player1.handValue && player1.handValue <= 21){
+    dealCard(dealer)
+    setDealerHandValue()
+    console.log(dealer)
+  }
 }
 
 function endGame() {
