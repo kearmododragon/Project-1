@@ -35,11 +35,11 @@
             <ul id="time">Time at the table: </ul>
         </div>
         <div>
-            <button id="playB" onclick="enterName()">Play</button>
-            <button id="dealB"onclick="dealBet()">Deal</button>
+            <button id="playB" onclick="enterName(), this.disabled = true;">Play</button>
+            <button id="dealB"onclick="dealBet(), this.disabled = true;">Deal</button>
             <button id="leaveB"onclick="reset()">Leave Table</button>
-            <button id = "hitButton"onclick="hitPlayer()">Hit</button>
-            <Button id = "stayB">Stay</Button>
+            <button id = "hitB"onclick="hitPlayer()">Hit</button>
+            <Button id = "stayB"onclick="stayButton()">Stay</Button>
             <p id="result"></p>
         </div>
 </body>

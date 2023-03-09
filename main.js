@@ -7,24 +7,25 @@ let hidden;
 let dealerAces = 0;
 let userAces = 0;
 let canHit = true;
-
+//ACES only supported as 11/1 if game functions//
 
 let player1 = {
   name: null,
   score: 100,
   cards: [],
   bet: 0,
+  handValue: 0
 }
 let dealer = {
   name: "Croupier",
   cards: [],
+  handValue: 0
 }
 
-function init(){
-
+function init() {
 }
 function enterName() {
-player1.name = prompt("Hello! What is your name?", "Enter name");
+  player1.name = prompt("Hello! What is your name?", "Enter name");
   if (player1.name != null) {
     document.getElementById("name").innerHTML =
       `Hello, ${player1.name}! Sit down and let's play Blackjack!`;
@@ -41,7 +42,7 @@ player1.name = prompt("Hello! What is your name?", "Enter name");
 //leave table button//
 //function resetGame()
 function buildDeck() {
-  let ranks = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"];
+  let ranks = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"];
   let suits = ["Spade", "Diamond", "Heart", "Clubs"];
   let deck = [];
 
@@ -73,48 +74,113 @@ function dealBet() {
       `Current bet: $ ${bet}`;
   }
   console.log(bet)
-  console.log(shuffledDeck)
   dealCard(player1);
   dealCard(player1);
   dealCard(dealer);
   dealCard(dealer);
-  console.log(player1)
-  console.log(dealer)
+  playerHandValue();
+  dealerHandValue();
 }
-
 
 function dealCard(gambler) {
   gambler.cards.push(shuffledDeck.pop())
 }
 
-function hitPlayer(){
+function hitPlayer() {
   dealCard(player1)
+  playerHandValue()
   console.log(player1.cards)
+  isBust()
 }
 
-function isBust(){
-}
-
-function currentHandValue(){
-
-}
-
-/*
-function getValue(cardA) {
-  let data = cardA.split("-");
-  let value = data[0];
-
-  if (isNaN(value)) {
-    if (value === "A") {
-      return 11;
+function playerHandValue() {
+  player1.handValue = 0
+  for (let i = 0; i < player1.cards.length; i++) {
+    let numberRankSplit = player1.cards[i].split("");
+    if (Number(numberRankSplit[0])) {
+      player1.handValue += Number(numberRankSplit[0])
     }
-    return 10;
+    else if ((numberRankSplit[0] == "T" || numberRankSplit[0] == "J" || numberRankSplit[0] == "Q" || numberRankSplit[0] == "K")) {
+      player1.handValue += 10
+    } else {
+      player1.handValue += 11
+    }
+  } console.log(player1)
+}
+
+function dealerHandValue() {
+  dealer.handValue = 0
+  for (let i = 0; i < dealer.cards.length; i++) {
+    let dealerRankSplit = dealer.cards[i].split("");
+    if (Number(dealerRankSplit[0])) {
+      dealer.handValue += Number(dealerRankSplit[0])
+    }
+    else if ((dealerRankSplit[0] == "T" || dealerRankSplit[0] == "J" || dealerRankSplit[0] == "Q" || dealerRankSplit[0] == "K")) {
+      dealer.handValue += 10
+    } else {
+      dealer.handValue += 11
+    }
+  } console.log(dealer)
+}
+
+
+
+function isBust() {
+  if (player1.handValue > 21) {
+    //DISABLE HIT BUTTON//
+    //REINSTATE DEAL BUTTON//
+    //minus bet from current pot //
+
+    document.getElementById("name").innerHTML =
+    `Oh No ${player1.name}! You went bust with ${player1.handValue}!`;
+    console.log("YOU LOSE MESSAGE")
+    // block hit
+    // trigger endgame
   }
-  return parseInt(value);
+}
+
+function stayButton() {
+  /*document.getElementById("dealB") =
+  this.disabled=false;
+  document.getElementById("hitB") =
+  this.disabled=true;*/
+  console.log(stay);
+}
+
+function endGame() {
+  if (dealer.handValue >= player1.handValue) {
+    //you lose message
+    //loss of money
+  } else {
+    //you win message
+    // money added to pot
+  }
+  function gameOver() {
+    if (currentPot = 0) {
+      //abusive you lose message
+      // offer to buy in again
+      // deal option removed
+    }
+  }
+
+}
+
+
+
+
+
+
+/*if (isNaN(value)) {
+  if (value === "A") {
+    return 11;
+  }
+  return 10;
+}
+return parseInt(value);
 }
 
 dealerSum += getValue(hidden);
-console.log(hidden);
+console.log(hidden);*/
 
 
 
