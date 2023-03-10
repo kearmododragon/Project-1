@@ -7,10 +7,16 @@ let dealerAces = 0;
 let userAces = 0;
 let canHit = true;
 //ACES only supported as 11/1 if game functions//
+// show card faces not just numbers //
+//log high score //
+//instigate timer //
+//auto type over prompt //
+// avoid "..." messages //
+// change color/fade of buttons when unavailable //
 
 let player1 = {
   name: null,
-  score: Number(0),
+  score: 0,
   cards: [],
   bet: 0,
   handValue: 0
@@ -26,13 +32,6 @@ function init() {
   console.log(init)
 }
 
-/*window.addEventListener("load") => {
-  console.log(start)
-    document.querySelector("dealB").disabled = true;
-    document.querySelector("hitB").disabled = true;
-    document.querySelector("stayB").disabled = true;
-}
-*/
 function play() {
   player1.name = prompt("Hello! What is your name?", "Enter name");
   if (player1.name != null) {
@@ -44,9 +43,19 @@ function play() {
     player1.score += Number(100);
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${player1.score}`;
-   document.getElementById("hitB").disabled = true;
-   document.getElementById("stayB").disabled = true;
-   document.getElementById("playB").disabled = true;
+    document.getElementById("message").innerHTML =
+      `Good luck!`;
+    document.getElementById("message2").innerHTML =
+      `...`;
+    document.getElementById("bet").innerHTML =
+      `Current Bet:`;
+    document.getElementById("playB").disabled = true;
+    document.getElementById("dealB").disabled = false;
+    document.getElementById("leaveB").disabled = false;
+    document.getElementById("hitB").disabled = true;
+    document.getElementById("stayB").disabled = true;
+
+    console.log(player1)
   }
 }
 function buildDeck() {
@@ -154,7 +163,7 @@ function setDealerHandValue() {
     `Current score: ${dealer.handValue}`
 }
 
-dealer 
+dealer
 
 function isBust() {
   if (player1.handValue > 21) {
@@ -216,28 +225,32 @@ function endGame() {
 function gameOver() {
   if (player1.score === 0) {
     console.log("gameOVer")
+    document.getElementById("name").innerHTML =
+    `...`
     document.getElementById("message2").innerHTML =
-      `You're broke. Get off my table, unless you'd like to buy back in?`;
-      document.getElementById("playB").disabled = false;
-      document.getElementById("dealB").disabled = true;
-      document.getElementById("leaveB").disabled = false;
-      document.getElementById("hitB").disabled = true;
-      document.getElementById("stayB").disabled = true;
+      `You're broke. Get off my table ${player1.name}, unless you'd like to buy back in?`;
+    document.getElementById("playB").disabled = false;
+    document.getElementById("dealB").disabled = true;
+    document.getElementById("leaveB").disabled = false;
+    document.getElementById("hitB").disabled = true;
+    document.getElementById("stayB").disabled = true;
   }
 }
 
 function reset() {
   document.getElementById("name").innerHTML =
-`You're leaving? so soon.`
+    `You're leaving? so soon.`
   document.getElementById("message").innerHTML =
-  `Such a shame.`
+    `Such a shame.`
   document.getElementById("message2").innerHTML =
-  `It's best for your wallet, ${player1.name}, if you leave. House always wins.`
+    `It's best for your wallet, ${player1.name}, if you leave. House always wins.`
   document.getElementById("playB").disabled = false;
   document.getElementById("dealB").disabled = true;
   document.getElementById("leaveB").disabled = true;
   document.getElementById("hitB").disabled = true;
   document.getElementById("stayB").disabled = true;
+  player1.score = 0
+  console.log(player1)
 }
 
 
