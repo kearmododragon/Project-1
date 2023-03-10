@@ -1,4 +1,3 @@
-let score = 100;
 let bet;
 let user;
 let dealerSum = 0;
@@ -11,7 +10,7 @@ let canHit = true;
 
 let player1 = {
   name: null,
-  score: 100,
+  score: Number(0),
   cards: [],
   bet: 0,
   handValue: 0
@@ -23,24 +22,33 @@ let dealer = {
 }
 
 function init() {
+  start();
+  console.log(init)
 }
-function enterName() {
+
+/*window.addEventListener("load") => {
+  console.log(start)
+    document.querySelector("dealB").disabled = true;
+    document.querySelector("hitB").disabled = true;
+    document.querySelector("stayB").disabled = true;
+}
+*/
+function play() {
   player1.name = prompt("Hello! What is your name?", "Enter name");
   if (player1.name != null) {
     document.getElementById("name").innerHTML =
       `Hello, ${player1.name}! Sit down and let's play Blackjack!`;
     document.getElementById("user").innerHTML =
       `${player1.name}:`
-    document.getElementById("currentScore").innerHTML =
-      `Current Pot: $ ${score}`;
     console.log(player1.name)
+    player1.score += Number(100);
+    document.getElementById("currentScore").innerHTML =
+      `Current Pot: $ ${player1.score}`;
+   document.getElementById("hitB").disabled = true;
+   document.getElementById("stayB").disabled = true;
+   document.getElementById("playB").disabled = true;
   }
 }
-
-// need to have "enter name" auto removed //
-
-//leave table button//
-//function resetGame()
 function buildDeck() {
   let ranks = [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"];
   let suits = ["Spade", "Diamond", "Heart", "Clubs"];
@@ -68,16 +76,25 @@ let builtDeck;
 let shuffledDeck;
 
 function dealBet() {
+  document.getElementById("playB").disabled = true;
+  document.getElementById("dealB").disabled = true;
+  document.getElementById("leaveB").disabled = true;
+  document.getElementById("hitB").disabled = false;
+  document.getElementById("stayB").disabled = false;
+  player1.bet = 0
   builtDeck = buildDeck();
   shuffledDeck = shuffDeck(builtDeck);
   player1.cards = []
   dealer.cards = []
   let bet = prompt("How much would you like to bet?", "$$$");
-  if (bet <= score) {
+  if (bet <= player1.score) {
     document.getElementById("bet").innerHTML =
       `Current bet: $ ${bet}`;
-      document.getElementById("stayB").disabled = false; 
-      document.getElementById("hitB").disabled = false;
+    document.getElementById("stayB").disabled = false;
+    document.getElementById("hitB").disabled = false;
+    player1.score = (player1.score - bet);
+    document.getElementById("currentScore").innerHTML =
+      `Current Pot: $ ${player1.score}`;
   }
   console.log(bet)
   dealCard(player1);
@@ -86,13 +103,16 @@ function dealBet() {
   dealCard(dealer);
   setPlayerHandValue();
   setDealerHandValue();
+  player1.bet += Number(bet);
 }
+
 
 function dealCard(gambler) {
   gambler.cards.push(shuffledDeck.pop())
 }
 
 function hitPlayer() {
+  document.getElementById("hitB").disabled = false;
   dealCard(player1)
   setPlayerHandValue()
   console.log(player1.cards)
@@ -112,6 +132,9 @@ function setPlayerHandValue() {
       player1.handValue += 11
     }
   } console.log(player1)
+  document.getElementById("playerTotal").innerHTML =
+    `${player1.name} current score: ${player1.handValue}`;
+
 }
 
 function setDealerHandValue() {
@@ -127,70 +150,117 @@ function setDealerHandValue() {
       dealer.handValue += 11
     }
   } console.log(dealer)
+  document.getElementById("dealerTotal").innerHTML =
+    `Current score: ${dealer.handValue}`
 }
 
-// dealer 
+dealer 
 
 function isBust() {
   if (player1.handValue > 21) {
-    //DISABLE HIT BUTTON//
-    //REINSTATE DEAL BUTTON//
-    //minus bet from current pot //
-
-    document.getElementById("name").innerHTML =
-    `Oh No ${player1.name}! You went bust with ${player1.handValue}!`;
-    // trigger endgame
+    document.getElementById("playB").disabled = true;
+    document.getElementById("dealB").disabled = false;
+    document.getElementById("leaveB").disabled = false;
+    document.getElementById("hitB").disabled = true;
+    document.getElementById("stayB").disabled = true;
+    document.getElementById("message").innerHTML =
+      `Oh no ${player1.name}! You went bust with ${player1.handValue}!`;
+    gameOver();
+    console.log(player1)
   }
 }
-
 function stayButton() {
-  document.getElementById("dealB").disabled = false; 
+  document.getElementById("dealB").disabled = false;
   document.getElementById("hitB").disabled = true;
-  // if dlr value < player value draw card.
-  while (dealer.handValue < player1.handValue && player1.handValue <= 21){
-    dealCard(dealer)
-    setDealerHandValue()
-    console.log(dealer)
+  while (dealer.handValue < player1.handValue && player1.handValue <= 21) {
+    dealCard(dealer);
+    setDealerHandValue();
   }
+  endGame();
+  console.log(dealer);
 }
 
 function endGame() {
-  if (dealer.handValue >= player1.handValue) {
-    //you lose message
-    //loss of money
+  document.getElementById("playB").disabled = true;
+  document.getElementById("dealB").disabled = false;
+  document.getElementById("leaveB").disabled = false;
+  document.getElementById("hitB").disabled = true;
+  document.getElementById("stayB").disabled = true;
+  if (dealer.handValue > player1.handValue && dealer.handValue <= 21) {
+    //LOSE THE GAME
+    document.getElementById("message").innerHTML =
+      `Oh no ${player1.name}, you had ${player1.handValue} and the dealer had ${dealer.handValue}. You lost $${player1.bet}! `
+    document.getElementById("currentScore").innerHTML =
+      `Current Pot: $ ${player1.score}`;
+    document.getElementById("stayB").disabled = true;
+    console.log(player1);
+    gameOver();
+  } else if (dealer.handValue < player1.handValue && player1.handValue <= 21 || dealer.handValue >= 22) {
+    //WIN THE GAME 
+    document.getElementById("message").innerHTML =
+      `Congratulations ${player1.name}, you had ${player1.handValue} and the dealer had ${dealer.handValue}. You won $${player1.bet}! `
+    player1.score += (player1.bet += player1.bet);
+    document.getElementById("currentScore").innerHTML =
+      `Current Pot: $ ${player1.score}`;
+    console.log(player1);
   } else {
-    //you win message
-    // money added to pot
+    //TIE GAME
+    document.getElementById("message").innerHTML =
+      `Well ${player1.name}, you had ${player1.handValue} and the dealer had ${dealer.handValue}. we will return your $${player1.bet}! `
+    player1.score = (player1.score + player1.bet);
+    document.getElementById("currentScore").innerHTML =
+      `Current Pot: $ ${player1.score}`;
+    console.log(player1);
   }
-  function gameOver() {
-    if (currentPot = 0) {
-      //abusive you lose message
-      // offer to buy in again
-      // deal option removed
-    }
+}
+function gameOver() {
+  if (player1.score === 0) {
+    console.log("gameOVer")
+    document.getElementById("message2").innerHTML =
+      `You're broke. Get off my table, unless you'd like to buy back in?`;
+      document.getElementById("playB").disabled = false;
+      document.getElementById("dealB").disabled = true;
+      document.getElementById("leaveB").disabled = false;
+      document.getElementById("hitB").disabled = true;
+      document.getElementById("stayB").disabled = true;
   }
+}
 
+function reset() {
+  document.getElementById("name").innerHTML =
+`You're leaving? so soon.`
+  document.getElementById("message").innerHTML =
+  `Such a shame.`
+  document.getElementById("message2").innerHTML =
+  `It's best for your wallet, ${player1.name}, if you leave. House always wins.`
+  document.getElementById("playB").disabled = false;
+  document.getElementById("dealB").disabled = true;
+  document.getElementById("leaveB").disabled = true;
+  document.getElementById("hitB").disabled = true;
+  document.getElementById("stayB").disabled = true;
 }
 
 
+/*
+let timer;
+let delay;
+let countState = 0;
 
+const displayEl = document.querySelector("#timerDisplay");
+const subEl = document.querySelector("#subRoutine");
 
-
-
-/*if (isNaN(value)) {
-  if (value === "A") {
-    return 11;
-  }
-  return 10;
+function init() {
+  delay = 100;
+  timer = setInterval(cb, delay);
 }
-return parseInt(value);
+
+function cb(){
+  countState++;
+  updateSubRoutine();
+  render();
 }
 
-dealerSum += getValue(hidden);
-console.log(hidden);*/
-
-
-
-/*user + player
-define as objects 
-each object ${user}*/
+function render() {
+  displayEl.textContent = countState;
+}
+*/

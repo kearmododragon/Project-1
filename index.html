@@ -13,33 +13,37 @@
 <body>
     <h2>Croupier: <span id="dealerSum"></span> </h1>
         <div id="dealerCards">
-            <img id = "hidden" src="./images/back.png">
+            <img id = "hidden" src="./images/back.png" alt="card back">
+            <ul id = "dealerTotal"> </ul>
         </div>
         <h2 id="user">
             <span id="userSum"></span> </h1>
             <div id="userCards">
                 <img src="./images/back.png">
+                <ul id = "playerTotal"> </ul>
             </div>
         </h2>
         <h2>
             <div id="spareDeck">
                 <span id="spareDeck"></span>
-                <img src="./images/back.png">
+                <img src="./images/back.png" alt="card back">
                 </di>
         </h2>
         <div id="stats">
             <ul id="name">Name: </ul>
+            <ul id="message"> Good Luck! </ul>
+            <ul id="message2"> ... </ul>
             <ul id="high">Highest Pot: $</ul>
             <ul id="currentScore">Current Pot: $</ul>
             <ul id="bet">Current Bet: </ul>
             <ul id="time">Time at the table: </ul>
         </div>
         <div>
-            <button id="playB" onclick="enterName(), this.disabled = true;">Play</button>
-            <button id="dealB"onclick="dealBet(), this.disabled = true;">Deal</button>
+            <button id="playB" onclick="play()">Play</button>
+            <button id="dealB"onclick="dealBet()">Deal</button>
             <button id="leaveB"onclick="reset()">Leave Table</button>
             <button id = "hitB"onclick="hitPlayer()">Hit</button>
-            <Button id = "stayB"onclick="stayButton(), this.disabled = true;">Stay</Button>
+            <Button id = "stayB"onclick="stayButton()">Stay</Button>
             <p id="result"></p>
         </div>
 </body>
