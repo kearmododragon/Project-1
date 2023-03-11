@@ -6,7 +6,9 @@ let hidden;
 let dealerAces = 0;
 let userAces = 0;
 let canHit = true;
-//ACES only supported as 11/1 if game functions//
+//ACES 11 points or 1 point/
+// 3-1 for "blackjack"//
+// 350-1 for randomly selected(or just spades) blackjack
 // show card faces not just numbers //
 //log high score //
 //instigate timer //
