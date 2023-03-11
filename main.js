@@ -1,11 +1,3 @@
-let bet;
-let user;
-let dealerSum = 0;
-let userSum = 0;
-let hidden;
-let dealerAces = 0;
-let userAces = 0;
-let canHit = true;
 //ACES 11 points or 1 point/
 // 3-1 for "blackjack"//
 // 350-1 for randomly selected(or just spades) blackjack
@@ -15,23 +7,19 @@ let canHit = true;
 //auto type over prompt //
 // avoid "..." messages //
 // change color/fade of buttons when unavailable //
-
+let bet;
 let player1 = {
   name: null,
   score: 0,
   cards: [],
   bet: 0,
-  handValue: 0
+  handValue: 0,
+  highestScore: 0,
 }
 let dealer = {
   name: "Croupier",
   cards: [],
   handValue: 0
-}
-
-function init() {
-  start();
-  console.log(init)
 }
 
 function play() {
@@ -106,7 +94,6 @@ function dealBet() {
     player1.score = (player1.score - bet);
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${player1.score}`;
-  }
   console.log(bet)
   dealCard(player1);
   dealCard(player1);
@@ -115,7 +102,7 @@ function dealBet() {
   setPlayerHandValue();
   setDealerHandValue();
   player1.bet += Number(bet);
-}
+}}
 
 
 function dealCard(gambler) {
@@ -177,6 +164,7 @@ function isBust() {
     document.getElementById("message").innerHTML =
       `Oh no ${player1.name}! You went bust with ${player1.handValue}!`;
     gameOver();
+    highScore();
     console.log(player1)
   }
 }
@@ -205,6 +193,7 @@ function endGame() {
       `Current Pot: $ ${player1.score}`;
     document.getElementById("stayB").disabled = true;
     console.log(player1);
+    highScore();
     gameOver();
   } else if (dealer.handValue < player1.handValue && player1.handValue <= 21 || dealer.handValue >= 22) {
     //WIN THE GAME 
@@ -213,6 +202,7 @@ function endGame() {
     player1.score += (player1.bet += player1.bet);
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${player1.score}`;
+      highScore();
     console.log(player1);
   } else {
     //TIE GAME
@@ -222,6 +212,7 @@ function endGame() {
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${player1.score}`;
     console.log(player1);
+    highScore();
   }
 }
 function gameOver() {
@@ -253,6 +244,42 @@ function reset() {
   document.getElementById("stayB").disabled = true;
   player1.score = 0
   console.log(player1)
+}
+
+function highScore() {
+  if (player1.score >= player1.highestScore){
+    player1.highestScore = player1.score
+    document.getElementById("high").innerHTML =
+    `Highest Pot: $ ${player1.highestScore}`
+  }
+}
+
+//timer
+// timer triggered by "play"
+// timer stopped by "game over"
+// timer reset by "reset"
+let seconds = 00;
+let tens = 00;
+let timeTens = document.getElementById("tens");
+let timeSeconds = document.getElementById("seconds");
+let buttonStart = document.getElementById("playB");
+let buttonStop = document.getElementById("leaveB")
+let buttonReset = document.getElementById("playB");
+let interval; //store timer values
+function timer(){
+  tens++;
+  if(tens<9){
+    timeTens.innerHTML = "0" + tens;
+  }
+  if (tens>9){
+    timeTens.innerHTML = tens;
+  }
+  if (tens>99){
+    seconds++;
+    timeSeconds.innerHTML = "0" + seconds;
+    tens = 0;
+    timeTens.innerHTML = "0" + 0;
+  }
 }
 
 

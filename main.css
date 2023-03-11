@@ -11,11 +11,11 @@ color: rgb(226, 226, 40);
 }
 
 #high{
-  color: black;
+  color: rgb(226, 226, 40);
 }
 
 #time{
-  color: #000;
+  color: red;
 }
 #dealerCards img {
   height: 200px;
