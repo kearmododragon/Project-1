@@ -1,12 +1,12 @@
+//EXTRAS//
 //ACES 11 points or 1 point/
 // 3-1 for "blackjack"//
 // 350-1 for randomly selected(or just spades) blackjack
 // show card faces not just numbers //
-//log high score //
 //instigate timer //
 //auto type over prompt //
 // avoid "..." messages //
-// change color/fade of buttons when unavailable //
+
 let bet;
 let player1 = {
   name: null,
@@ -15,6 +15,7 @@ let player1 = {
   bet: 0,
   handValue: 0,
   highestScore: 0,
+  time: 0,
 }
 let dealer = {
   name: "Croupier",
@@ -44,7 +45,6 @@ function play() {
     document.getElementById("leaveB").disabled = false;
     document.getElementById("hitB").disabled = true;
     document.getElementById("stayB").disabled = true;
-
     console.log(player1)
   }
 }
@@ -97,7 +97,6 @@ function dealBet() {
   console.log(bet)
   dealCard(player1);
   dealCard(player1);
-  dealCard(dealer);
   dealCard(dealer);
   setPlayerHandValue();
   setDealerHandValue();
@@ -254,55 +253,26 @@ function highScore() {
   }
 }
 
+
+let timer;
+let delay;
+let count = 0
+const displayEl = document.querySelector("#timerDisplay")
+
+function init(){
+delay = 1000
+timer = setInterval(cb, delay);
+}
+function cb(){
+count++;
+render();
+}
+
+function render() {
+displayEl.textContent = count;
+}
+init();
 //timer
 // timer triggered by "play"
 // timer stopped by "game over"
 // timer reset by "reset"
-let seconds = 00;
-let tens = 00;
-let timeTens = document.getElementById("tens");
-let timeSeconds = document.getElementById("seconds");
-let buttonStart = document.getElementById("playB");
-let buttonStop = document.getElementById("leaveB")
-let buttonReset = document.getElementById("playB");
-let interval; //store timer values
-function timer(){
-  tens++;
-  if(tens<9){
-    timeTens.innerHTML = "0" + tens;
-  }
-  if (tens>9){
-    timeTens.innerHTML = tens;
-  }
-  if (tens>99){
-    seconds++;
-    timeSeconds.innerHTML = "0" + seconds;
-    tens = 0;
-    timeTens.innerHTML = "0" + 0;
-  }
-}
-
-
-/*
-let timer;
-let delay;
-let countState = 0;
-
-const displayEl = document.querySelector("#timerDisplay");
-const subEl = document.querySelector("#subRoutine");
-
-function init() {
-  delay = 100;
-  timer = setInterval(cb, delay);
-}
-
-function cb(){
-  countState++;
-  updateSubRoutine();
-  render();
-}
-
-function render() {
-  displayEl.textContent = countState;
-}
-*/
