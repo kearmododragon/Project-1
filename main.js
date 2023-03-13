@@ -1,12 +1,3 @@
-//EXTRAS//
-//ACES 11 points or 1 point/
-// 3-1 for "blackjack"//
-// 350-1 for randomly selected(or just spades) blackjack
-// show card faces not just numbers //
-//instigate timer //
-//auto type over prompt //
-// avoid "..." messages //
-
 let bet;
 let player1 = {
   name: null,
@@ -186,7 +177,6 @@ function endGame() {
   document.getElementById("hitB").disabled = true;
   document.getElementById("stayB").disabled = true;
   if (dealer.handValue > player1.handValue && dealer.handValue <= 21) {
-    //LOSE THE GAME
     document.getElementById("message").innerHTML =
       `Oh no ${player1.name}, you had ${player1.handValue} and the dealer had ${dealer.handValue}. You lost $${player1.bet}! `
     document.getElementById("currentScore").innerHTML =
@@ -196,7 +186,6 @@ function endGame() {
     highScore();
     gameOver();
   } else if (dealer.handValue < player1.handValue && player1.handValue <= 21 || dealer.handValue >= 22) {
-    //WIN THE GAME 
     document.getElementById("message").innerHTML =
       `Congratulations ${player1.name}, you had ${player1.handValue} and the dealer had ${dealer.handValue}. You won $${player1.bet}! `
     player1.score += (player1.bet += player1.bet);
@@ -205,7 +194,6 @@ function endGame() {
     highScore();
     console.log(player1);
   } else {
-    //TIE GAME
     document.getElementById("message").innerHTML =
       `Well ${player1.name}, you had ${player1.handValue} and the dealer had ${dealer.handValue}. we will return your $${player1.bet}! `
     player1.score = (player1.score + player1.bet);
@@ -253,27 +241,3 @@ function highScore() {
       `Highest Pot: $ ${player1.highestScore}`
   }
 }
-
-
-let timer;
-let delay;
-let count = 0
-const displayEl = document.querySelector("#timerDisplay")
-
-function init() {
-  delay = 1000
-  timer = setInterval(cb, delay);
-}
-function cb() {
-  count++;
-  render();
-}
-
-function render() {
-  displayEl.textContent = count;
-}
-init();
-//timer
-// timer triggered by "play"
-// timer stopped by "game over"
-// timer reset by "reset"
