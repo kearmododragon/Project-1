@@ -1,40 +1,44 @@
 html {
-    height: 100%;
-    width: 100%;
-    
-  
-  }
-body {
-text-align: center;
-background-color: black;
-color: rgb(226, 226, 40);
+  height: 100%;
+  width: 100%;
+
+
 }
 
-#high{
+body {
+  text-align: center;
+  background-color: black;
   color: rgb(226, 226, 40);
 }
 
-#time{
+#high {
+  color: rgb(226, 226, 40);
+}
+
+#time {
   color: black;
 }
+
 #dealerCards img {
   height: 200px;
   margin: 5px;
   box-shadow: 0 0px 100px rgb(40, 226, 71);
 }
+
 #userCards img {
   height: 200px;
   margin: 5px;
   box-shadow: 0 0px 100px rgb(226, 52, 40);
 
 }
+
 #spareDeck img {
   height: 200px;
   margin: 5px;
   float: left;
   box-shadow: 0 0px 40px rgb(226, 226, 40);
 
-  
+
 }
 
 #stats {
@@ -51,7 +55,8 @@ color: rgb(226, 226, 40);
   color: black;
   background-color: rgb(226, 226, 40);
 }
-#playB:disabled{
+
+#playB:disabled {
   background-color: transparent;
   border: transparent;
   color: transparent;
@@ -65,7 +70,8 @@ color: rgb(226, 226, 40);
   color: black;
   background-color: rgb(226, 226, 40);
 }
-#dealB:disabled{
+
+#dealB:disabled {
   background-color: transparent;
   border: transparent;
   color: transparent;
@@ -78,11 +84,13 @@ color: rgb(226, 226, 40);
   color: black;
   background-color: rgb(226, 226, 40);
 }
-#leaveB:disabled{
+
+#leaveB:disabled {
   background-color: transparent;
   border: transparent;
   color: transparent;
 }
+
 #hitB {
   align-items: center;
   width: 100px;
@@ -90,11 +98,13 @@ color: rgb(226, 226, 40);
   color: black;
   background-color: rgb(226, 226, 40);
 }
-#hitB:disabled{
+
+#hitB:disabled {
   background-color: transparent;
   border: transparent;
   color: transparent;
 }
+
 #stayB {
   align-items: center;
   width: 100px;
@@ -102,7 +112,8 @@ color: rgb(226, 226, 40);
   color: black;
   background-color: rgb(226, 226, 40);
 }
-#stayB:disabled{
+
+#stayB:disabled {
   background-color: transparent;
   border: transparent;
   color: transparent;

@@ -94,14 +94,15 @@ function dealBet() {
     player1.score = (player1.score - bet);
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${player1.score}`;
-  console.log(bet)
-  dealCard(player1);
-  dealCard(player1);
-  dealCard(dealer);
-  setPlayerHandValue();
-  setDealerHandValue();
-  player1.bet += Number(bet);
-}}
+    console.log(bet)
+    dealCard(player1);
+    dealCard(player1);
+    dealCard(dealer);
+    setPlayerHandValue();
+    setDealerHandValue();
+    player1.bet += Number(bet);
+  }
+}
 
 
 function dealCard(gambler) {
@@ -201,7 +202,7 @@ function endGame() {
     player1.score += (player1.bet += player1.bet);
     document.getElementById("currentScore").innerHTML =
       `Current Pot: $ ${player1.score}`;
-      highScore();
+    highScore();
     console.log(player1);
   } else {
     //TIE GAME
@@ -218,7 +219,7 @@ function gameOver() {
   if (player1.score === 0) {
     console.log("gameOVer")
     document.getElementById("name").innerHTML =
-    `...`
+      `...`
     document.getElementById("message2").innerHTML =
       `You're broke. Get off my table ${player1.name}, unless you'd like to buy back in?`;
     document.getElementById("playB").disabled = false;
@@ -246,10 +247,10 @@ function reset() {
 }
 
 function highScore() {
-  if (player1.score >= player1.highestScore){
+  if (player1.score >= player1.highestScore) {
     player1.highestScore = player1.score
     document.getElementById("high").innerHTML =
-    `Highest Pot: $ ${player1.highestScore}`
+      `Highest Pot: $ ${player1.highestScore}`
   }
 }
 
@@ -259,17 +260,17 @@ let delay;
 let count = 0
 const displayEl = document.querySelector("#timerDisplay")
 
-function init(){
-delay = 1000
-timer = setInterval(cb, delay);
+function init() {
+  delay = 1000
+  timer = setInterval(cb, delay);
 }
-function cb(){
-count++;
-render();
+function cb() {
+  count++;
+  render();
 }
 
 function render() {
-displayEl.textContent = count;
+  displayEl.textContent = count;
 }
 init();
 //timer
