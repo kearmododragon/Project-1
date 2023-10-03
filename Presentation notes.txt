@@ -1,0 +1,30 @@
+game - blackjack
+- explain how to play BJ 
+- style choice
+- play a hand or 2
+
+showing code
+favourite function setPlayer(or dlr)HandValue
+
+potentially looks complicated
+splits the cards from "5Diamond" to "5" "D" "I" etc.
+checks to see if 0 in the array is a number, and awards those points.
+checks if it's T(ten) J(Jack) Q(Queen) K(King) and awards 10.
+T rather than 10
+then checks for A to give 11. 
+
+The more work I did on this the easier I found it.
+Ended up writing psuedo code/plan on a sheet of paper
+helped really picture what was doing.
+
+simple bits like "if card is 1-9 give points"
+If letter not A give 10
+if A give 11/1
+
+To start with though I spent a few days really regretting
+my choice of blackjack as I was lost, felt like 
+I was just in the middle of a desert with no clue where to go.
+
+I think to improve this, I would have liked better CSS,
+cards in your hand to show and A to be 11/1, however
+i'm happy with where it's at. 

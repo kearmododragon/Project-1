@@ -25,6 +25,6 @@ Icebox items;
 // 3-1 for "blackjack"//
 // 350-1 for randomly selected(or just spades) blackjack
 // show card faces not just numbers //
-//instigate timer //
-//auto type over prompt //
+// instigate timer //
+// auto type over prompt //
 // avoid "..." messages //
